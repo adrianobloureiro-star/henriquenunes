@@ -16,32 +16,33 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--accent); background-color: var(--dark); overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--accent); background-color: var(--dark); overflow-x: hidden; width: 100%; }
 
         /* --- Header --- */
         header {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background-color: rgba(15, 18, 22, 0.7); backdrop-filter: blur(15px); transition: 0.4s;
+            background-color: rgba(15, 18, 22, 0.8); backdrop-filter: blur(15px); transition: 0.4s;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
-        .logo { height: 100px; transition: 0.3s; filter: drop-shadow(0 0 8px rgba(31, 73, 125, 0.3)); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; transition: 0.3s; }
+        .logo { height: 100px; width: auto; transition: 0.3s; filter: drop-shadow(0 0 8px rgba(31, 73, 125, 0.3)); object-fit: contain; }
         header.scrolled .logo { height: 70px; }
 
         /* --- Botões --- */
-        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px; justify-content: flex-start; }
         
         .btn-zap {
-            background-color: var(--whatsapp); color: white; padding: 15px 30px; border-radius: 6px;
+            background-color: var(--whatsapp); color: white; padding: 15px 25px; border-radius: 6px;
             text-decoration: none; font-weight: 800; display: inline-flex; align-items: center;
-            gap: 10px; transition: 0.3s; text-transform: uppercase; font-size: 0.85rem; border: none;
+            gap: 10px; transition: 0.3s; text-transform: uppercase; font-size: 0.8rem; border: none;
+            white-space: nowrap;
         }
 
         .btn-orcamento {
-            background-color: transparent; color: white; padding: 15px 30px; border-radius: 6px;
+            background-color: transparent; color: white; padding: 15px 25px; border-radius: 6px;
             text-decoration: none; font-weight: 800; display: inline-flex; align-items: center;
-            gap: 10px; transition: 0.3s; text-transform: uppercase; font-size: 0.85rem; 
-            border: 2px solid white;
+            gap: 10px; transition: 0.3s; text-transform: uppercase; font-size: 0.8rem; 
+            border: 2px solid white; white-space: nowrap;
         }
 
         .btn-zap:hover, .btn-orcamento:hover { transform: translateY(-3px); filter: brightness(1.1); }
@@ -50,46 +51,115 @@
         /* --- Hero --- */
         .hero {
             position: relative; height: 100vh; display: flex; align-items: center;
-            background-color: var(--dark); overflow: hidden;
+            background-color: var(--dark); overflow: hidden; width: 100%;
         }
-        #video-bg { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; z-index: 1; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15, 18, 22, 0.9) 20%, rgba(15, 18, 22, 0.4) 100%); z-index: 2; }
+        #video-bg { 
+            position: absolute; top: 50%; left: 50%; 
+            width: 100%; height: 100%; 
+            transform: translate(-50%, -50%); 
+            object-fit: cover; z-index: 1; 
+        }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15, 18, 22, 0.95) 20%, rgba(15, 18, 22, 0.6) 100%); z-index: 2; }
         .hero .container { position: relative; z-index: 3; }
-        .hero-content h1 { font-size: 3.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+        .hero-content h1 { font-size: 3.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; max-width: 800px; }
         .hero-content h1 span { color: var(--primary); }
-        .hero-content p { font-size: 1.2rem; color: var(--text-gray); max-width: 600px; }
+        .hero-content p { font-size: 1.2rem; color: var(--text-gray); max-width: 600px; margin-bottom: 10px; }
 
         /* --- Carrossel --- */
-        .carousel-section { padding: 80px 0; background-color: var(--dark); }
-        .carousel-container { position: relative; max-width: 1100px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6); background: #000; }
-        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1); }
+        .carousel-section { padding: 80px 0; background-color: var(--dark); width: 100%; }
+        .carousel-container { position: relative; max-width: 1100px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6); background: #000; width: 100%; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1); width: 100%; }
         .carousel-slide { min-width: 100%; height: 550px; object-fit: cover; display: block; }
         .carousel-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); padding: 0 20px; pointer-events: none; }
-        .nav-btn { background: rgba(31, 73, 125, 0.8); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; pointer-events: auto; font-size: 1.2rem; }
-        .carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
+        .nav-btn { background: rgba(31, 73, 125, 0.8); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; pointer-events: auto; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+        .carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 25px; width: 100%; }
         .dot { width: 10px; height: 10px; background: #333; border-radius: 50%; cursor: pointer; transition: 0.3s; }
         .dot.active { background: var(--primary); width: 30px; border-radius: 10px; }
 
         /* --- Serviços --- */
-        .services { padding: 100px 0; background-color: #fdfdfd; color: var(--dark); }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .services { padding: 100px 0; background-color: #fdfdfd; color: var(--dark); width: 100%; }
+        .section-title { text-align: center; margin-bottom: 60px; width: 100%; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
         .card { background: #fff; padding: 45px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
         /* --- Footer --- */
-        footer { padding: 60px 0 30px; background-color: #090b0d; text-align: center; border-top: 1px solid #1a1e23; }
-        .footer-logo { height: 80px; margin-bottom: 20px; }
+        footer { padding: 60px 0 30px; background-color: #090b0d; text-align: center; border-top: 1px solid #1a1e23; width: 100%; }
+        .footer-logo { height: 80px; width: auto; margin-bottom: 20px; object-fit: contain; }
 
-        /* AJUSTES MOBILE */
+        /* ============================================================
+           CORREÇÕES CRÍTICAS PARA MOBILE (ATUALIZADO)
+           ============================================================ */
         @media (max-width: 768px) {
-            .logo { height: 60px; }
-            header.scrolled .logo { height: 50px; }
-            .hero-content h1 { font-size: 2.2rem; text-align: center; }
-            .hero-content p { font-size: 1rem; text-align: center; }
-            .btn-group { flex-direction: column; align-items: center; width: 100%; }
-            .btn-zap, .btn-orcamento { width: 100%; max-width: 320px; justify-content: center; }
-            .carousel-slide { height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
-            .services-grid { grid-template-columns: 1fr; padding: 0 10px; }
+            /* 1. Header: Aumentar a logo e reduzir o botão Contato */
+            .header-content { padding: 10px 0; gap: 10px; }
+            .logo { 
+                height: 80px !important; /* Forçar tamanho maior da logo */
+                max-width: 60% !important; /* Garantir que ela não ocupe a tela toda */
+            }
+            header.scrolled .logo { height: 60px !important; }
+            
+            #navbar .btn-zap { 
+                padding: 10px 15px !important; /* Botão Contato menor no topo */
+                font-size: 0.7rem !important;
+                width: auto !important; /* Não deixar ele largo */
+                min-width: 100px;
+                justify-content: center;
+            }
+
+            /* 2. Vídeo de Fundo: Corrigir a ampliação exagerada */
+            #video-bg { 
+                width: 100% !important; /* Forçar a largura da tela */
+                height: 100% !important; /* Forçar a altura da tela */
+                object-fit: cover !important; /* Manter a proporção sem distorcer */
+                object-position: center center; /* Centralizar o vídeo */
+            }
+            
+            /* 3. Hero Content e Fontes */
+            .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+            .hero-content h1 { 
+                font-size: 2.2rem !important; 
+                line-height: 1.2;
+                margin-bottom: 15px;
+                text-align: center;
+                margin-left: auto; margin-right: auto;
+            }
+            .hero-content p { 
+                font-size: 1rem !important; 
+                text-align: center;
+                margin-left: auto; margin-right: auto;
+                max-width: 90%;
+            }
+            
+            /* 4. Botões Principais Empilhados (Reservar e Orçamento) */
+            .hero .btn-group { 
+                flex-direction: column; 
+                align-items: center; 
+                width: 100%; 
+                margin-top: 40px;
+                gap: 15px;
+            }
+            .hero .btn-zap, .hero .btn-orcamento { 
+                width: 100% !important; 
+                max-width: 300px !important; /* Forçar largura controlada */
+                justify-content: center; 
+                padding: 18px !important; 
+                font-size: 0.85rem !important;
+            }
+
+            /* 5. Carrossel Corrigido (Não corta imagem) */
+            .carousel-slide { 
+                height: auto !important; 
+                aspect-ratio: 16 / 9; /* Proporção de cinema */
+                object-fit: contain !important; /* Mostrar a imagem inteira */
+                background-color: #000; /* Fundo preto para preencher as bordas */
+            }
+            .carousel-section { padding: 40px 0; }
+            .nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+
+            /* Grid de Serviços */
+            .services { padding: 60px 0; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 10px; }
+            .card { padding: 30px; text-align: center; }
         }
     </style>
 </head>
